@@ -7,8 +7,29 @@
     "serve": "^11.1.0"
   },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "connect-timeout": "^1.9.0",
+    "debug": "^4.3.1",
+    "depd": "^2.0.0",
+    "ee-first": "^1.1.1",
+    "encodeurl": "^1.0.2",
+    "escape-html": "^1.0.3",
     "express": "^4.17.1",
-    "http-proxy-middleware": "^1.0.6"
+    "finalhandler": "^1.1.2",
+    "http-proxy-middleware": "^1.0.6",
+    "merge-descriptors": "^1.0.1",
+    "on-finished": "^2.3.0",
+    "body-parser":"^1.19.0",
+    "connect-timeout":"^1.9.0",
+    "debug":"^4.3.1",
+    "depd":"^2.0.0",
+    "ee-first":"^1.1.1",
+    "encodeurl":"^1.0.2",
+    "escape-html":"^1.0.3",
+    "express":"^4.17.1",
+    "finalhandler":"^1.1.2",
+    "http-proxy-middleware":"^1.0.6",
+    "merge-descriptors":"^1.0.1",
+    "on-finished":"^2.3.0"
   }
 }
