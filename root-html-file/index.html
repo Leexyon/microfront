@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Coexisting Vue Microfrontends</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="importmap-type" content="systemjs-importmap">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .root_html {
+            min-height: 100vh;
+            display: flex;
+        }
+
+        #single-spa-application:navbar {
+            flex: 0 0 auto;
+            width: 8rem;
+        }
+
+        .root_html > div {
+            overflow: hidden;
+        }
+
+        .root_html > div:last-child {
+            flex: 1;
+        }
+        .root_html > div {
+            flex: 0 0 auto;
+        }
+
+
+    </style>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "microapp1": "http://localhost:33501/js/microapp1.js",
+          "single-spa": "https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js",
+          "vue": "https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js",
+          "vue-router": "https://cdn.jsdelivr.net/npm/vue-router@3.0.7/dist/vue-router.min.js"
+        }
+      }
+
+    </script>
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/single-spa/4.3.7/system/single-spa.min.js"
+          as="script" crossorigin="anonymous"/>
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/vue@2.6.10/dist/vue.js" as="script" crossorigin="anonymous"/>
+    <script src="https://unpkg.com/import-map-overrides@1.7.2/dist/import-map-overrides.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/system.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/amd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-exports.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/named-register.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/6.1.1/extras/use-default.min.js"></script>
+</head>
+<body class="root_html">
+<script>
+    (function () {
+        Promise.all([System.import('single-spa'), System.import('vue'), System.import('vue-router')]).then(function (modules) {
+            var singleSpa = modules[0];
+            var Vue = modules[1];
+            var VueRouter = modules[2];
+
+            Vue.use(VueRouter)
+
+            singleSpa.registerApplication(
+                'microapp1',
+                () => System.import('microapp1'),
+                location => true
+            );
+            
+            singleSpa.start();
+        })
+    })()
+</script>
+    <import-map-overrides-full show-when-local-storage="overrides-ui"></import-map-overrides-full>
+</body>
+</html>

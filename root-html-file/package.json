@@ -1,0 +1,14 @@
+{
+  "name": "root-html-file",
+  "scripts": {
+    "serve": "node server.js"
+  },
+  "devDependencies": {
+    "serve": "^11.1.0"
+  },
+  "dependencies": {
+    "connect-timeout": "^1.9.0",
+    "express": "^4.17.1",
+    "http-proxy-middleware": "^1.0.6"
+  }
+}
